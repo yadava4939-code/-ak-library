@@ -1,0 +1,478 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AK Library | Telugu, Hindi & English Books</title>
+<meta name="description" content="Explore popular Telugu, Hindi and English books at AK Library. Search books by title, author and language.">
+<meta name="theme-color" content="#14213d">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #202b3c;
+}
+
+header {
+    background: #14213d;
+    color: white;
+    padding: 25px 7%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 29px;
+    font-weight: bold;
+}
+
+.logo span {
+    color: #fca311;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.hero {
+    background: linear-gradient(120deg, #14213d, #355c91);
+    color: white;
+    text-align: center;
+    padding: 65px 20px;
+}
+
+.hero h1 {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.search-box {
+    max-width: 650px;
+    margin: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.search-box button {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #fca311;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+    padding: 35px 20px;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    font-size: 27px;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filters button {
+    border: 1px solid #d4dce8;
+    background: white;
+    padding: 11px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.filters button.active,
+.filters button:hover {
+    background: #14213d;
+    color: white;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.book-card {
+    background: white;
+    border-radius: 12px;
+    padding: 22px;
+    box-shadow: 0 4px 15px #14213d12;
+    transition: transform 0.2s;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+}
+
+.book-cover {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 8px;
+    background: #e8edf5;
+    font-size: 23px;
+    font-weight: bold;
+    padding: 15px;
+    margin-bottom: 17px;
+    overflow-wrap: anywhere;
+}
+
+.book-card h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.book-card p {
+    color: #657086;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.language {
+    display: inline-block;
+    background: #fff0d2;
+    color: #76500b;
+    padding: 5px 9px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin: 10px 0;
+}
+
+.read-btn {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background: #14213d;
+    color: white;
+    padding: 11px;
+    border-radius: 7px;
+    margin-top: 12px;
+}
+
+.read-btn:hover {
+    background: #355c91;
+}
+
+#noResults {
+    display: none;
+    text-align: center;
+    padding: 30px;
+    color: #657086;
+}
+
+.resources {
+    margin-top: 45px;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    line-height: 2;
+}
+
+.resources a {
+    color: #2458a6;
+}
+
+footer {
+    margin-top: 40px;
+    padding: 25px;
+    background: #14213d;
+    color: white;
+    text-align: center;
+    line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+    .header-content {
+        justify-content: center;
+        text-align: center;
+    }
+
+    nav a {
+        margin: 8px;
+        display: inline-block;
+    }
+
+    .hero h1 {
+        font-size: 29px;
+    }
+
+    .search-box {
+        flex-direction: column;
+    }
+
+    .search-box input,
+    .search-box button {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header id="home">
+    <div class="header-content">
+        <div class="logo">📚 AK <span>Library</span></div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#books">Books</a>
+            <a href="#resources">Free Libraries</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Welcome to AK Library</h1>
+    <p>
+        Discover popular books in Telugu, Hindi and English.<br>
+        Search for your next favourite book!
+    </p>
+
+    <div class="search-box">
+        <input id="searchInput"
+               type="search"
+               placeholder="Search book title or author..."
+               aria-label="Search books">
+
+        <button onclick="filterBooks()">Search Books</button>
+    </div>
+</section>
+
+<main>
+    <section id="books">
+        <h2 class="section-title">📖 Explore Our Books</h2>
+
+        <div class="filters">
+            <button class="active" onclick="setLanguage('All', this)">All Books</button>
+            <button onclick="setLanguage('Telugu', this)">తెలుగు</button>
+            <button onclick="setLanguage('Hindi', this)">हिन्दी</button>
+            <button onclick="setLanguage('English', this)">English</button>
+        </div>
+
+        <div class="book-grid" id="bookGrid">
+
+            <!-- TELUGU BOOKS -->
+            <article class="book-card" data-language="Telugu">
+                <div class="book-cover">వేమన పద్యాలు</div>
+                <h3>Vemana Padyalu</h3>
+                <p>Author: Vemana</p>
+                <span class="language">Telugu</span>
+                <a class="read-btn"
+                   href="https://te.wikisource.org/"
+                   target="_blank" rel="noopener">Find / Read Book</a>
+            </article>
+
+            <article class="book-card" data-language="Telugu">
+                <div class="book-cover">సుమతీ శతకం</div>
+                <h3>Sumati Satakam</h3>
+                <p>Author: Baddena</p>
+                <span class="language">Telugu</span>
+                <a class="read-btn"
+                   href="https://te.wikisource.org/"
+                   target="_blank" rel="noopener">Find / Read Book</a>
+            </article>
+
+            <article class="book-card" data-language="Telugu">
+                <div class="book-cover">మహాభారతం</div>
+                <h3>Andhra Mahabharatam</h3>
+                <p>Authors: Nannaya, Tikkana and Errana</p>
+                <span class="language">Telugu</span>
+                <a class="read-btn"
+                   href="https://te.wikisource.org/"
+                   target="_blank" rel="noopener">Find / Read Book</a>
+            </article>
+
+            <!-- HINDI BOOKS -->
+            <article class="book-card" data-language="Hindi">
+                <div class="book-cover">गोदान</div>
+                <h3>Godaan</h3>
+                <p>Author: Munshi Premchand</p>
+                <span class="language">Hindi</span>
+                <a class="read-btn"
+                   href="https://hi.wikisource.org/"
+                   target="_blank" rel="noopener">Find / Read Book</a>
+            </article>
+
+            <article class="book-card" data-language="Hindi">
+                <div class="book-cover">निर्मला</div>
+                <h3>Nirmala</h3>
+                <p>Author: Munshi Premchand</p>
+                <span class="language">Hindi</span>
+                <a class="read-btn"
+                   href="https://hi.wikisource.org/"
+                   target="_blank" rel="noopener">Find / Read Book</a>
+            </article>
+
+            <article class="book-card" data-language="Hindi">
+                <div class="book-cover">गबन</div>
+                <h3>Gaban</h3>
+                <p>Author: Munshi Premchand</p>
+                <span class="language">Hindi</span>
+                <a class="read-btn"
+                   href="https://hi.wikisource.org/"
+                   target="_blank" rel="noopener">Find / Read Book</a>
+            </article>
+
+            <!-- ENGLISH BOOKS -->
+            <article class="book-card" data-language="English">
+                <div class="book-cover">Pride and Prejudice</div>
+                <h3>Pride and Prejudice</h3>
+                <p>Author: Jane Austen</p>
+                <span class="language">English</span>
+                <a class="read-btn"
+                   href="https://www.gutenberg.org/ebooks/1342"
+                   target="_blank" rel="noopener">Read Free Book</a>
+            </article>
+
+            <article class="book-card" data-language="English">
+                <div class="book-cover">Alice in Wonderland</div>
+                <h3>Alice's Adventures in Wonderland</h3>
+                <p>Author: Lewis Carroll</p>
+                <span class="language">English</span>
+                <a class="read-btn"
+                   href="https://www.gutenberg.org/ebooks/11"
+                   target="_blank" rel="noopener">Read Free Book</a>
+            </article>
+
+            <article class="book-card" data-language="English">
+                <div class="book-cover">Sherlock Holmes</div>
+                <h3>The Adventures of Sherlock Holmes</h3>
+                <p>Author: Arthur Conan Doyle</p>
+                <span class="language">English</span>
+                <a class="read-btn"
+                   href="https://www.gutenberg.org/ebooks/1661"
+                   target="_blank" rel="noopener">Read Free Book</a>
+            </article>
+
+            <article class="book-card" data-language="English">
+                <div class="book-cover">The Jungle Book</div>
+                <h3>The Jungle Book</h3>
+                <p>Author: Rudyard Kipling</p>
+                <span class="language">English</span>
+                <a class="read-btn"
+                   href="https://www.gutenberg.org/ebooks/236"
+                   target="_blank" rel="noopener">Read Free Book</a>
+            </article>
+
+            <article class="book-card" data-language="English">
+                <div class="book-cover">Frankenstein</div>
+                <h3>Frankenstein</h3>
+                <p>Author: Mary Shelley</p>
+                <span class="language">English</span>
+                <a class="read-btn"
+                   href="https://www.gutenberg.org/ebooks/84"
+                   target="_blank" rel="noopener">Read Free Book</a>
+            </article>
+
+        </div>
+
+        <p id="noResults">No books found. Try another title or language.</p>
+    </section>
+
+    <section class="resources" id="resources">
+        <h2>🌐 More Online Book Libraries</h2>
+        <p>Explore these websites to find more books:</p>
+        <p><a href="https://te.wikisource.org/" target="_blank" rel="noopener">Telugu Wikisource</a> — Telugu texts</p>
+        <p><a href="https://hi.wikisource.org/" target="_blank" rel="noopener">Hindi Wikisource</a> — Hindi texts</p>
+        <p><a href="https://www.gutenberg.org/" target="_blank" rel="noopener">Project Gutenberg</a> — Free classic eBooks</p>
+        <p><a href="https://openlibrary.org/" target="_blank" rel="noopener">Open Library</a> — Search a large book catalogue</p>
+        <p><a href="https://books.google.com/" target="_blank" rel="noopener">Google Books</a> — Discover books and previews</p>
+    </section>
+</main>
+
+<footer>
+    <h2>📚 AK Library</h2>
+    <p>Your gateway to Telugu, Hindi and English literature.</p>
+    <p>Read more. Learn more. Grow more.</p>
+    <p>© 2026 AK Library</p>
+</footer>
+
+<script>
+let selectedLanguage = "All";
+
+function setLanguage(language, button) {
+    selectedLanguage = language;
+
+    document.querySelectorAll(".filters button").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    filterBooks();
+}
+
+function filterBooks() {
+    const query = document.getElementById("searchInput")
+        .value.toLowerCase().trim();
+
+    const cards = document.querySelectorAll(".book-card");
+    let visibleCount = 0;
+
+    cards.forEach(card => {
+        const language = card.dataset.language;
+        const text = card.innerText.toLowerCase();
+
+        const matchesLanguage =
+            selectedLanguage === "All" ||
+            language === selectedLanguage;
+
+        const matchesSearch = text.includes(query);
+        const show = matchesLanguage && matchesSearch;
+
+        card.style.display = show ? "" : "none";
+
+        if (show) visibleCount++;
+    });
+
+    document.getElementById("noResults").style.display =
+        visibleCount === 0 ? "block" : "none";
+}
+
+document.getElementById("searchInput")
+    .addEventListener("input", filterBooks);
+</script>
+
+</body>
+</html>
+```
